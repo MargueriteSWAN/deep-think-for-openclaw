@@ -1,0 +1,8 @@
+{
+  "base_url": "YOUR_CRL",
+  "api_key": "YOUR_API_KEY",
+  "default_model": "YOUR_MODEL",
+  "default_api": "openai",
+  "max_tokens": 4096,
+  "temperature": 0.7
+}
