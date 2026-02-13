@@ -1,9 +1,11 @@
-```markdown
+
+
+
 # Deep Think
 
-An external strong-model proxy for [OpenClaw](https://github.com/recursal/OpenClaw). Lets your local model call a more capable API (OpenAI / Anthropic compatible) to handle complex tasks.
+A CLI tool for [OpenClaw](https://github.com/openclaw) that lets your local model call a stronger external model (e.g. Claude, GPT) via API proxy to handle complex tasks.
 
-Zero dependencies — pure Python stdlib.
+Zero dependencies — pure Python stdlib (`urllib`).
 
 ## Quick Start
 
@@ -29,33 +31,19 @@ python3 deep_[think.py](http://think.py) "Your question here"
 
 ```
 
-# Default (OpenAI-compatible endpoint)
+python3 deep_[think.py](http://think.py) "question"                          # default (OpenAI format)
 
-python3 deep_[think.py](http://think.py) "Your question"
+python3 deep_[think.py](http://think.py) --api anthropic "question"           # Anthropic format
 
-# Anthropic endpoint
+python3 deep_[think.py](http://think.py) --model claude-sonnet-4-20250514 "question"
 
-python3 deep_[think.py](http://think.py) --api anthropic "Your question"
+python3 deep_[think.py](http://think.py) --system "You are an expert" "question"
 
-# Custom model
+python3 deep_[think.py](http://think.py) --file question.txt                  # read from file
 
-python3 deep_[think.py](http://think.py) --model claude-sonnet-4-20250514 "Your question"
-
-# With system prompt
-
-python3 deep_[think.py](http://think.py) --system "You are a geology expert" "Analyze this data"
-
-# Read question from file
-
-python3 deep_[think.py](http://think.py) --file question.txt
-
-# Attach context file
-
-python3 deep_[think.py](http://think.py) --context [code.py](http://code.py) "What's wrong with this code?"
+python3 deep_[think.py](http://think.py) --context [code.py](http://code.py) "What's wrong?"    # attach context
 
 ```
-
-## Options
 
 | Flag | Description | Default |
 |------|-------------|---------|
@@ -63,45 +51,13 @@ python3 deep_[think.py](http://think.py) --context [code.py](http://code.py) "Wh
 | `--model` | Model name | from config |
 | `--system` | System prompt | generic assistant |
 | `--file` | Read question from file | — |
-| `--context` | Prepend file content as context | — |
+| `--context` | Attach a context file | — |
 | `--max-tokens` | Max output tokens | `4096` |
 | `--temperature` | Sampling temperature | `0.7` |
 
-## Configuration
+## OpenClaw Integration
 
-Copy the example and fill in your values:
-
-```
-
-cp config.example.json config.json
-
-```
-
-```
-
-{
-
-"base_url": "https://your-api-proxy.example.com",
-
-"api_key": "sk-your-key-here",
-
-"default_model": "claude-opus-4-6-thinking",
-
-"default_api": "openai",
-
-"max_tokens": 4096,
-
-"temperature": 0.7
-
-}
-
-```
-
-> ⚠️ **Never commit `config.json`** — it contains your API key. It is already in `.gitignore`.
-
-## For OpenClaw Agents
-
-Place the script in your workspace skills directory:
+Place the files under your OpenClaw workspace skills directory:
 
 ```
 
@@ -109,27 +65,23 @@ Place the script in your workspace skills directory:
 
 ├── deep_[think.py](http://think.py)
 
-├── config.json       ← your private config (git-ignored)
+├── config.json       # ⚠️ gitignored — contains your API key
 
 ├── config.example.json
 
-└── [SKILL.md](http://SKILL.md)          ← agent-facing instructions
+└── [SKILL.md](http://SKILL.md)          # instructions for the local model
 
 ```
 
-See `SKILL.md` for guidance on when and how your agent should invoke this tool.
+## ⚠️ Security
+
+- **Never commit `config.json`** — it contains your API key.
+- `config.example.json` is the safe template.
+- `.gitignore` is pre-configured to exclude `config.json`.
 
 ## Acknowledgments
 
-Co-created with assistance from:
-- **Claude Opus 4.6** (Anthropic) — architecture design, code generation, and documentation
-- **Aemeath** (DeepSeek-chat via OpenClaw) — testing and integration
+Co-created with:
+- **Claude Opus 4.6** (Anthropic) — architecture design & code generation
+- **Aemeath** (Deepseek via OpenClaw) — testing & integration
 
-The author is responsible for all design decisions and final implementation.
-
-## License
-
-MIT
-```
-
----
