@@ -26,9 +26,9 @@ SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 CONFIG_PATH = os.path.join(SCRIPT_DIR, "config.json")
 
 DEFAULTS = {
-    "base_url": "https://cc.honoursoft.cn",
+    "base_url": "",
     "api_key": "",
-    "default_model": "claude-opus-4-6-thinking",
+    "default_model": "",
     "default_api": "openai",
     "max_tokens": 4096,
     "temperature": 0.7,
@@ -117,8 +117,7 @@ def call_anthropic(cfg: dict, model: str, system: str, user_msg: str,
 # ---------------------------------------------------------------------------
 
 DEFAULT_SYSTEM = (
-    "你是一个能力极强的 AI 助手。请用中文回答，除非用户要求其他语言。"
-    "回答要准确、有条理、实用。如果不确定，请明确说明。"
+    "你是一个能力极强的 AI 助手。回答要准确、有条理、实用。如果不确定，请明确说明。"
 )
 
 def main():
