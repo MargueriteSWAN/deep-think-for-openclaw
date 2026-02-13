@@ -13,7 +13,7 @@ Zero dependencies — pure Python stdlib (`urllib`).
 
 # 1. Clone & configure
 
-git clone https://github.com/MargueriteSWAN/deep-think.git
+git clone https://github.com/MargueriteSWAN/deep-think-for-openclaw.git
 
 cd deep-think
 
