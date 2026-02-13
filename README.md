@@ -128,3 +128,11 @@ python3 /root/.openclaw/workspace/skills/deep-think/deep_think.py "你好，测�
 ```
 
 脚本**零外部依赖**，只用 Python 标准库（`urllib`），不需要安装任何 pip 包，不会碰 OpenClaw 的任何配置。
+
+## Acknowledgments
+
+This tool was co-created with the assistance of:
+- **Claude Opus 4.6** (Anthropic) — architecture design, code generation, and documentation
+- **Aemeath** (DeepSeek-chat via OpenClaw) — testing and integration
+
+The author is responsible for all design decisions and final implementation.
